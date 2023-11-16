@@ -2,11 +2,13 @@ import { createSlice, Dispatch } from '@reduxjs/toolkit';
 
 
 import { ITopicState } from '../../@types/topic';
+import { act } from 'react-dom/test-utils';
 
 const initialState: ITopicState = {
     isLoading: false,
     error: null,
-    topics: []
+    topics: [],
+    topic: null
 }
 
 const topicsSlice = createSlice({
@@ -23,6 +25,11 @@ const topicsSlice = createSlice({
         state.isLoading = false;
         state.topics = action.payload;
       },
+      // GET Topic
+      getTopicSuccess(state, action){
+        state.isLoading = false;
+        state.topic = action.payload;
+      }
     },
   });
 
@@ -47,6 +54,20 @@ export function getTopics() {
         //   errorMessage = error?.message;
         // }
         // dispatch(slice.actions.hasError(errorMessage));
+        return false;
+      }
+    };
+  }
+
+  export function getTopic(id: string) {
+    return async (dispatch: Dispatch) => {
+      dispatch(topicsSlice.actions.startLoading());
+      try {
+        const response = await fetch(`http://localhost:5214/api/topics/${id}`).then(response => response.json());
+        dispatch(topicsSlice.actions.getTopicSuccess(response));
+        return true;
+      } catch (error) {
+        console.log(error);
         return false;
       }
     };
