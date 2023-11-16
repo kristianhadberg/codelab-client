@@ -1,13 +1,12 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import { getTopics } from "../redux/slices/topics";
-import { useAppDispatch } from "../app/hooks";
-import { RootState } from "../redux/store";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { Typography } from "@mui/material";
 
 export default function TopicsPage() {
     const dispatch = useAppDispatch();
 
-    const { topics, isLoading } = useSelector((state: RootState) => state.topics);
+    const { topics, isLoading } = useAppSelector((state) => state.topics);
 
     useEffect(() => {
         dispatch(getTopics());
@@ -15,10 +14,19 @@ export default function TopicsPage() {
 
     return (
         <>
-            <h1>Topics</h1>
-            {topics.map((t) => {
-                return <span key={t.id}>{t.name}</span>;
-            })}
+            <div>
+                <Typography variant="h2">Topics</Typography>
+                <Typography variant="h6">Select a topic you want to learn about.</Typography>
+                {/* {topics.map((t) => (
+                    <span key={t.id}>{t.name}</span>
+                ))} */}
+                {topics.map((t) => (
+                    <div style={{ display: "flex" }}>
+                        <Typography variant="h4">{t.name} -</Typography>
+                        <Typography variant="h5">learn more about arrays and collections</Typography>
+                    </div>
+                ))}
+            </div>
         </>
     );
 }

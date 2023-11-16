@@ -1,14 +1,20 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import TopicsPage from "./pages/TopicsPage";
+import LearningPathPage from "./pages/LearningPathPage";
+import SideNav from "./components/SideNav";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 function App() {
     return (
         <div className="App">
-            <header className="App-header">
-                <TopicsPage />
-            </header>
+            <SideNav />
+            <Routes>
+                <Route path="/" element={<Navigate to="/topics" replace={true} />} />
+                <Route path="/topics" element={<TopicsPage />} />
+                <Route path="/learning-path" element={<LearningPathPage />} />
+            </Routes>
+            {/* <TopicsPage /> */}
         </div>
     );
 }
