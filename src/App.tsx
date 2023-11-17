@@ -4,7 +4,8 @@ import TopicsPage from "./pages/TopicsPage";
 import LearningPathPage from "./pages/LearningPathPage";
 import SideNav from "./components/SideNav";
 import { Navigate, Route, Routes } from "react-router-dom";
-import TopicDetailPage from "./components/TopicDetailPage";
+import TopicDetailPage from "./pages/TopicDetailPage";
+import ExercisePage from "./pages/ExercisePage";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Route path="/" element={<Navigate to="/topics" replace={true} />} />
                     <Route path="/topics" element={<TopicsPage />} />
                     <Route path="/topics/:topicId" element={<TopicDetailPage />} />
+                    <Route path="/exercise/:exerciseId" element={<ExercisePage />} />
                     <Route path="/learning-path" element={<LearningPathPage />} />
                 </Routes>
             </div>

@@ -11,9 +11,6 @@ const TopicDetailPage = () => {
     const { topic, isLoading } = useAppSelector((state) => state.topics);
     const { exercises } = useAppSelector((state) => state.exercises);
 
-    console.log(topic);
-    console.log(exercises);
-
     useEffect(() => {
         if (topicId) {
             dispatch(getTopic(topicId));
@@ -45,9 +42,11 @@ const TopicDetailPage = () => {
                                 <TableBody>
                                     {exercises.map((e) => (
                                         <TableRow key={e.id}>
-                                            <Link to={`/exercise/${e.id}`}>
-                                                <TableCell>{e.name}</TableCell>
-                                            </Link>
+                                            <TableCell>
+                                                <Link style={{ color: "black" }} to={`/exercise/${e.id}`}>
+                                                    {e.name}
+                                                </Link>
+                                            </TableCell>
                                             <TableCell>temp</TableCell>
                                             <TableCell>temp</TableCell>
                                             <TableCell>temp</TableCell>
