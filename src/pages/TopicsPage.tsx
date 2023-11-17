@@ -21,14 +21,17 @@ export default function TopicsPage() {
                 <>
                     <Typography variant="h2">Topics</Typography>
                     <Typography variant="h6">Select a topic you want to learn about.</Typography>
-                    {topics.map((t) => (
-                        <div key={t.id} style={{ display: "flex" }}>
-                            <Link to={`/topics/${t.id}`}>
-                                <Typography variant="h4">{t.name} -</Typography>
-                            </Link>
-                            <Typography variant="h5">learn more about arrays and collections</Typography>
-                        </div>
-                    ))}
+                    <div className="topics" style={{ marginTop: "50px" }}>
+                        {topics.map((t) => (
+                            <div key={t.id} style={{ display: "flex", alignItems: "center" }}>
+                                <Link to={`/topics/${t.id}`}>
+                                    <Typography variant="h4">{t.name}</Typography>
+                                </Link>
+                                <span>&nbsp;-&nbsp;</span>
+                                <Typography variant="h5">learn more about arrays and collections</Typography>
+                            </div>
+                        ))}
+                    </div>
                 </>
             )}
         </div>

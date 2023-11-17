@@ -1,7 +1,7 @@
 import React from "react";
-import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
-import TopicsPage from "../pages/TopicsPage";
-import LearningPathPage from "../pages/LearningPathPage";
+import { Link } from "react-router-dom";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import RouteIcon from "@mui/icons-material/Route";
 
 const SideNav = () => {
     return (
@@ -9,10 +9,20 @@ const SideNav = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/topics">Topics</Link>
+                        <Link to="/topics">
+                            <div className="sidenav-link">
+                                <MenuBookIcon />
+                                <p>Topics</p>
+                            </div>
+                        </Link>
                     </li>
                     <li>
-                        <Link to="/learning-path">Nats</Link>
+                        <Link to="/learning-path">
+                            <div className="sidenav-link">
+                                <RouteIcon />
+                                <p>Learning Path</p>
+                            </div>
+                        </Link>
                     </li>
                 </ul>
             </nav>

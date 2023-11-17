@@ -1,5 +1,26 @@
 .App {
   display: flex;
+  color: #ffffff;
+}
+
+.main {
+  padding: 50px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .sidenav {
@@ -10,5 +31,10 @@
   overflow-x: hidden; 
   display: flex; 
   flex-direction: column; 
+  align-items: center;
+}
+
+.sidenav-link  {
+  display: flex;
   align-items: center;
 }
