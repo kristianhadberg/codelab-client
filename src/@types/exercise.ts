@@ -1,6 +1,7 @@
 export type IExercise = {
     id: number,
     name: string,
+    description: string,
     starterCode: string,
 }
 
