@@ -5,7 +5,7 @@ import RouteIcon from "@mui/icons-material/Route";
 
 const SideNav = () => {
     return (
-        <div className="sidenav" style={{ width: "200px", paddingTop: "20px" }}>
+        <div className="sidenav">
             <nav>
                 <ul>
                     <li>

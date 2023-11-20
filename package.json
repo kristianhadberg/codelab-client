@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@monaco-editor/react": "^4.6.0",
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
     "@reduxjs/toolkit": "^1.9.7",
@@ -15,6 +16,7 @@
     "@types/node": "^17.0.45",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
+    "monaco-editor": "^0.44.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-pro-sidebar": "^1.1.0-alpha.1",

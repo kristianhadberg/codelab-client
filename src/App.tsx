@@ -11,7 +11,7 @@ function App() {
     return (
         <div className="App">
             <SideNav />
-            <div className="main">
+            <div className="main" style={{ width: "100%" }}>
                 <Routes>
                     <Route path="/" element={<Navigate to="/topics" replace={true} />} />
                     <Route path="/topics" element={<TopicsPage />} />

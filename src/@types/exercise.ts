@@ -3,6 +3,7 @@ export type IExercise = {
     name: string,
     description: string,
     starterCode: string,
+    expectedOutput: string
 }
 
 export type IExerciseState = {
