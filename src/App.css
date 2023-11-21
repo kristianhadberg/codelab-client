@@ -25,7 +25,6 @@ a:hover {
 .sidenav {
   min-height: 100vh;
   min-width: 200px;
-  padding-top: 20px;
   z-index: 1; 
   border-right: 1px solid #7E7E7E;
   transition: .5s ease; 

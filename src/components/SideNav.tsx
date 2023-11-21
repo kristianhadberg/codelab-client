@@ -2,11 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import RouteIcon from "@mui/icons-material/Route";
+import { Typography } from "@mui/material";
 
 const SideNav = () => {
     return (
         <div className="sidenav">
-            <nav>
+            <Typography variant="h4" style={{ paddingTop: "10px" }}>
+                Code Lab
+            </Typography>
+            <nav style={{ paddingTop: "20px" }}>
                 <ul>
                     <li>
                         <Link to="/topics">
