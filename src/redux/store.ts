@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import topicsReducer from '../redux/slices/topics'
 import exercisesReducer from '../redux/slices/exercises'
+import submissionsReducer from '../redux/slices/submissions'
 
 export const store = configureStore({
   reducer: {
     topics: topicsReducer,
     exercises: exercisesReducer,
+    submissions: submissionsReducer,
   },
 });
 

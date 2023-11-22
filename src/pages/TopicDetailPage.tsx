@@ -29,8 +29,8 @@ const TopicDetailPage = () => {
                     </div>
                     <div className="exercises" style={{ marginTop: "50px" }}>
                         <Typography variant="h4">Exercises</Typography>
-                        <TableContainer component={Paper}>
-                            <Table sx={{ minWidth: 650 }}>
+                        <TableContainer component={Paper} sx={{ width: "60%" }}>
+                            <Table sx={{ minWidth: 300 }}>
                                 <TableHead>
                                     <TableRow>
                                         <TableCell sx={{ width: "100%" }}>Name</TableCell>

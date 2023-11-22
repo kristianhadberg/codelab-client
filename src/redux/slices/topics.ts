@@ -2,7 +2,6 @@ import { createSlice, Dispatch } from '@reduxjs/toolkit';
 
 
 import { ITopicState } from '../../@types/topic';
-import { act } from 'react-dom/test-utils';
 
 const initialState: ITopicState = {
     isLoading: false,
