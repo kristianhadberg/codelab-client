@@ -1,6 +1,7 @@
 export type ITopic = {
     id: number,
-    name: string
+    name: string,
+    description: string
 }
 
 export type ITopicState = {

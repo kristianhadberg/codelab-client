@@ -26,6 +26,9 @@ const TopicDetailPage = () => {
                 <>
                     <div className="header">
                         <Typography variant="h3">{topic?.name}</Typography>
+                        <Typography variant="body2" sx={{ width: "60%" }}>
+                            {topic?.description}
+                        </Typography>
                     </div>
                     <div className="exercises" style={{ marginTop: "50px" }}>
                         <Typography variant="h5">Exercises</Typography>
