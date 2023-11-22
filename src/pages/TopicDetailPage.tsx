@@ -25,10 +25,10 @@ const TopicDetailPage = () => {
             ) : (
                 <>
                     <div className="header">
-                        <Typography variant="h2">{topic?.name}</Typography>
+                        <Typography variant="h3">{topic?.name}</Typography>
                     </div>
                     <div className="exercises" style={{ marginTop: "50px" }}>
-                        <Typography variant="h4">Exercises</Typography>
+                        <Typography variant="h5">Exercises</Typography>
                         <TableContainer component={Paper} sx={{ width: "60%" }}>
                             <Table sx={{ minWidth: 300 }}>
                                 <TableHead>

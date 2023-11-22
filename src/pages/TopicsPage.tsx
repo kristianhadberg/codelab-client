@@ -19,16 +19,16 @@ export default function TopicsPage() {
                 <CircularProgress />
             ) : (
                 <>
-                    <Typography variant="h2">Topics</Typography>
+                    <Typography variant="h3">Topics</Typography>
                     <Typography variant="h6">Select a topic you want to learn about.</Typography>
                     <div className="topics" style={{ marginTop: "50px" }}>
                         {topics.map((t) => (
                             <div key={t.id} style={{ display: "flex", alignItems: "center" }}>
                                 <Link to={`/topics/${t.id}`}>
-                                    <Typography variant="h4">{t.name}</Typography>
+                                    <Typography variant="h5">{t.name}</Typography>
                                 </Link>
                                 <span>&nbsp;-&nbsp;</span>
-                                <Typography variant="h5">learn more about arrays and collections</Typography>
+                                <Typography variant="h6">learn more about arrays and collections</Typography>
                             </div>
                         ))}
                     </div>

@@ -47,7 +47,9 @@ const ExercisePage = () => {
                         <div className="left" style={{ width: "40%" }}>
                             <Typography variant="h4">{exercise?.name}</Typography>
                             <Typography variant="body2">{exercise?.description}</Typography>
-                            <Typography variant="h4">Expected output:</Typography>
+                            <Typography variant="h4" style={{ marginTop: "50px" }}>
+                                Expected output:
+                            </Typography>
                             <code>{exercise?.expectedOutput}</code>
                         </div>
                         <div className="right" style={{ width: "60%" }}>
