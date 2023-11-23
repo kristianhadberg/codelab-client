@@ -12,7 +12,8 @@ const ExercisePage = () => {
     const dispatch = useAppDispatch();
     const { exerciseId } = useParams<{ exerciseId: string }>();
     const { exercise, isLoading } = useAppSelector((state) => state.exercises);
-    const { submissions, isSubmitting, passed } = useAppSelector((state) => state.submissions);
+    const { submissions, isSubmitting, passed, testCases, error } = useAppSelector((state) => state.submissions);
+    console.log(error);
 
     const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
 
@@ -43,14 +44,14 @@ const ExercisePage = () => {
                 <CircularProgress />
             ) : (
                 <>
-                    <div style={{ display: "flex" }}>
-                        <div className="left" style={{ width: "40%" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                        <div className="left" style={{ width: "35%" }}>
                             <Typography variant="h4">{exercise?.name}</Typography>
                             <Typography variant="body2">{exercise?.description}</Typography>
                             <Typography variant="h4" style={{ marginTop: "50px" }}>
                                 Expected output:
                             </Typography>
-                            <code>{exercise?.expectedOutput}</code>
+                            <code style={{ padding: "10px", display: "block", backgroundColor: "#3c4d57", borderRadius: "5px" }}>{exercise?.expectedOutput}</code>
                         </div>
                         <div className="right" style={{ width: "60%" }}>
                             <Editor height="70vh" defaultLanguage="java" defaultValue={`${exercise?.starterCode}`} theme="vs-dark" onMount={handleEditorDidMount} options={{ formatOnPaste: true, formatOnType: true }} />
@@ -65,9 +66,14 @@ const ExercisePage = () => {
                                         Passed
                                     </Typography>
                                 ) : (
-                                    <Typography sx={{ width: "50%", textAlign: "center" }} color="error" variant="h6">
-                                        Failed
-                                    </Typography>
+                                    <div>
+                                        <Typography sx={{ width: "100%", textAlign: "center" }} variant="h6">
+                                            {testCases}
+                                        </Typography>
+                                        <Typography sx={{ width: "100%", textAlign: "center" }} color="error" variant="h6">
+                                            Failed
+                                        </Typography>
+                                    </div>
                                 )}
                             </div>
                         </div>

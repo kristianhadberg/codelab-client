@@ -9,4 +9,5 @@ export type ISubmissionState = {
     error: string | null;
     submissions: ISubmission[];
     passed: boolean | null;
+    testCases: string[];
 }
