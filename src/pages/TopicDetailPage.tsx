@@ -4,6 +4,7 @@ import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, T
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { getTopic } from "../redux/slices/topics";
 import { getExercisesByTopicId } from "../redux/slices/exercises";
+import TopicTable from "../components/TopicTable";
 
 const TopicDetailPage = () => {
     const { topicId } = useParams<{ topicId: string }>();
@@ -32,32 +33,7 @@ const TopicDetailPage = () => {
                     </div>
                     <div className="exercises" style={{ marginTop: "50px" }}>
                         <Typography variant="h5">Exercises</Typography>
-                        <TableContainer component={Paper} sx={{ width: "60%" }}>
-                            <Table sx={{ minWidth: 300 }}>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell sx={{ width: "100%" }}>Name</TableCell>
-                                        <TableCell>Difficulty</TableCell>
-                                        <TableCell>Submissions</TableCell>
-                                        <TableCell>Completed?</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {exercises.map((e) => (
-                                        <TableRow key={e.id}>
-                                            <TableCell>
-                                                <Link style={{ color: "black" }} to={`/exercise/${e.id}`}>
-                                                    {e.name}
-                                                </Link>
-                                            </TableCell>
-                                            <TableCell>temp</TableCell>
-                                            <TableCell>temp</TableCell>
-                                            <TableCell>temp</TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
+                        <TopicTable exercises={exercises}></TopicTable>
                     </div>
                 </>
             )}
