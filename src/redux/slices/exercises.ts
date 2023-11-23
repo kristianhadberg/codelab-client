@@ -5,7 +5,7 @@ const initialState: IExerciseState = {
     isLoading: false,
     error: null,
     exercises: [],
-    exercise: null
+    exercise: null,
 }
 
 const exercisesSlice = createSlice({

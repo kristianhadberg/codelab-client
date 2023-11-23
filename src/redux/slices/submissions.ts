@@ -8,7 +8,7 @@ const initialState: ISubmissionState = {
     passed: null,
     error: null,
     submissions: [],
-    testCases: [],
+    failedCases: [],
 }
 
 const submissionsSlice = createSlice({
@@ -24,7 +24,7 @@ const submissionsSlice = createSlice({
       startSubmitting(state) {
         state.isSubmitting = true;
         state.passed = null;
-        state.testCases = [];
+        state.failedCases = [];
         state.error = null;
       },
       // GET Submissions
@@ -42,7 +42,7 @@ const submissionsSlice = createSlice({
       postSubmissionFailed(state, action,) {
         state.isSubmitting = false;
         state.passed = false;
-        state.testCases = action.payload;
+        state.failedCases = action.payload;
       },
       clearPassedState(state) {
         state.passed = null;

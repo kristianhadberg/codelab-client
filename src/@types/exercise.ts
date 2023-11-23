@@ -1,9 +1,12 @@
+import { ITestCase } from "./testCase";
+
 export type IExercise = {
     id: number,
     name: string,
     description: string,
     starterCode: string,
     expectedOutput: string
+    testCases: ITestCase[]
 }
 
 export type IExerciseState = {

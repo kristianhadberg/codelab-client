@@ -2,18 +2,18 @@ import React, { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { Button, CircularProgress, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { getExerciseByid } from "../redux/slices/exercises";
+import exercises, { getExerciseByid } from "../redux/slices/exercises";
 import { createSubmission, clearPassedState } from "../redux/slices/submissions";
 import Editor from "@monaco-editor/react";
 import { editor } from "monaco-editor";
 import { ISubmission } from "../@types/submission";
+import { ITestCase } from "../@types/testCase";
 
 const ExercisePage = () => {
     const dispatch = useAppDispatch();
     const { exerciseId } = useParams<{ exerciseId: string }>();
     const { exercise, isLoading } = useAppSelector((state) => state.exercises);
-    const { submissions, isSubmitting, passed, testCases, error } = useAppSelector((state) => state.submissions);
-    console.log(error);
+    const { submissions, isSubmitting, passed, failedCases, error } = useAppSelector((state) => state.submissions);
 
     const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
 
@@ -52,6 +52,7 @@ const ExercisePage = () => {
                                 Expected output:
                             </Typography>
                             <code style={{ padding: "10px", display: "block", backgroundColor: "#3c4d57", borderRadius: "5px" }}>{exercise?.expectedOutput}</code>
+                            {exercise?.testCases ? <TestCases testCases={exercise?.testCases}></TestCases> : <></>}
                         </div>
                         <div className="right" style={{ width: "60%" }}>
                             <Editor height="70vh" defaultLanguage="java" defaultValue={`${exercise?.starterCode}`} theme="vs-dark" onMount={handleEditorDidMount} options={{ formatOnPaste: true, formatOnType: true }} />
@@ -68,7 +69,7 @@ const ExercisePage = () => {
                                 ) : (
                                     <div>
                                         <Typography sx={{ width: "100%", textAlign: "center" }} variant="h6">
-                                            {testCases}
+                                            {failedCases}
                                         </Typography>
                                         <Typography sx={{ width: "100%", textAlign: "center" }} color="error" variant="h6">
                                             Failed
@@ -81,6 +82,34 @@ const ExercisePage = () => {
                 </>
             )}
         </div>
+    );
+};
+
+type Props = {
+    testCases: ITestCase[];
+};
+
+const TestCases = ({ testCases }: Props) => {
+    return (
+        <>
+            {testCases.map((testCase, index) => (
+                <>
+                    <Typography variant="h6" style={{ marginTop: "20px" }}>
+                        Test case {index + 1}:
+                    </Typography>
+                    <code style={{ padding: "10px", display: "block", backgroundColor: "#3c4d57", borderRadius: "5px" }}>
+                        <div style={{ display: "flex" }}>
+                            <Typography fontWeight="bold">Input: &nbsp;</Typography>
+                            <Typography>{testCase.input}</Typography>
+                        </div>
+                        <div style={{ display: "flex" }}>
+                            <Typography fontWeight="bold">Expected output: &nbsp;</Typography>
+                            <Typography>{testCase.expectedOutput}</Typography>
+                        </div>
+                    </code>
+                </>
+            ))}
+        </>
     );
 };
 
