@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import TopicsPage from "./pages/TopicsPage";
+import LoginPage from "./pages/LoginPage";
 import LearningPathPage from "./pages/LearningPathPage";
 import SideNav from "./components/SideNav";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -13,7 +14,8 @@ function App() {
             <SideNav />
             <div className="main" style={{ width: "100%" }}>
                 <Routes>
-                    <Route path="/" element={<Navigate to="/topics" replace={true} />} />
+                    <Route path="/" element={<Navigate to="/login" replace={true} />} />
+                    <Route path="/login" element={<LoginPage />} />
                     <Route path="/topics" element={<TopicsPage />} />
                     <Route path="/topics/:topicId" element={<TopicDetailPage />} />
                     <Route path="/exercise/:exerciseId" element={<ExercisePage />} />
