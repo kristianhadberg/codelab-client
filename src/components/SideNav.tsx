@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import RouteIcon from "@mui/icons-material/Route";
 import { Typography } from "@mui/material";
@@ -26,21 +26,32 @@ const SideNav = () => {
                     <p>Hi, {user.user.firstName}</p>
                     <ul>
                         <li>
-                            <Link to="/topics">
+                            <NavLink
+                                to="topics"
+                                style={({ isActive }) => ({
+                                    color: isActive ? "#7695a8" : "",
+                                })}
+                            >
                                 <div className="sidenav-link">
                                     <MenuBookIcon />
-                                    <p>Topics</p>
+                                    <p style={{ marginLeft: "10px" }}>Topics</p>
                                 </div>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/learning-path">
+                            <NavLink
+                                to="learning-path"
+                                style={({ isActive }) => ({
+                                    color: isActive ? "#7695a8" : "",
+                                })}
+                            >
                                 <div className="sidenav-link">
                                     <RouteIcon />
-                                    <p>Learning Path</p>
+                                    <p style={{ marginLeft: "10px" }}>Learning Path</p>
                                 </div>
-                            </Link>
+                            </NavLink>
                         </li>
+
                         <li>
                             <div onClick={handleLogout} style={{ cursor: "pointer" }} className="sidenav-link logout">
                                 <p>Log out</p>
