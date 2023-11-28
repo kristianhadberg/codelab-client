@@ -48,10 +48,14 @@ const ExercisePage = () => {
                         <div className="left" style={{ width: "35%" }}>
                             <Typography variant="h4">{exercise?.name}</Typography>
                             <Typography variant="body2">{exercise?.description}</Typography>
-                            <Typography variant="h4" style={{ marginTop: "50px" }}>
-                                Expected output:
-                            </Typography>
-                            <code style={{ padding: "10px", display: "block", backgroundColor: "#3c4d57", borderRadius: "5px" }}>{exercise?.expectedOutput}</code>
+                            {exercise?.expectedOutput !== "Success" && (
+                                <>
+                                    <Typography variant="h4" style={{ marginTop: "50px" }}>
+                                        Expected output:
+                                    </Typography>
+                                    <code style={{ padding: "10px", display: "block", backgroundColor: "#3c4d57", borderRadius: "5px" }}>{exercise?.expectedOutput}</code>
+                                </>
+                            )}
                             {exercise?.testCases ? <TestCases testCases={exercise?.testCases}></TestCases> : <></>}
                         </div>
                         <div className="right" style={{ width: "60%" }}>

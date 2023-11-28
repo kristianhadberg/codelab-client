@@ -6,6 +6,7 @@ export type IExercise = {
     description: string,
     starterCode: string,
     expectedOutput: string
+    submissionCount: number,
     testCases: ITestCase[]
 }
 

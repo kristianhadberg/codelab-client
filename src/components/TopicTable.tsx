@@ -27,7 +27,7 @@ const TopicTable = ({ exercises }: Props) => {
                                 </Link>
                             </TableCell>
                             <TableCell>temp</TableCell>
-                            <TableCell>temp</TableCell>
+                            <TableCell>{e.submissionCount}</TableCell>
                             <TableCell>temp</TableCell>
                         </TableRow>
                     ))}
