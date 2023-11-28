@@ -1,13 +1,13 @@
-import { Button, FormControl, InputAdornment, TextField } from "@mui/material";
+import { Button, FormControl, TextField } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { login } from "../redux/auth/auth";
+import { useNavigate, Link } from "react-router-dom";
+import { register } from "../redux/auth/auth";
 import { useAppDispatch } from "../app/hooks";
-export default function LoginPage() {
+export default function RegisterPage() {
     const [username, setUsername] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [password, setPassword] = useState("");
-    const [usernameError, setUsernameError] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -22,13 +22,10 @@ export default function LoginPage() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const loginSuccess = await dispatch(login(username, password));
+        const registerSuccess = await dispatch(register(username, firstName, lastName, password));
 
-        if (loginSuccess) {
+        if (registerSuccess) {
             navigate("/topics");
-        } else {
-            setUsernameError(true);
-            setPasswordError(true);
         }
     };
 
@@ -37,14 +34,16 @@ export default function LoginPage() {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "80vh" }}>
                 <form style={{ display: "flex", justifyContent: "center", width: "100%" }} onSubmit={handleSubmit}>
                     <FormControl style={{ width: "50%" }}>
-                        <TextField style={textFieldStyles} inputRef={usernameRef} id="username" label="Username" variant="outlined" onChange={(e) => setUsername(e.target.value)} required error={usernameError} />
-                        <TextField style={textFieldStyles} id="password" label="Password" variant="outlined" type="password" onChange={(e) => setPassword(e.target.value)} required error={passwordError} />
+                        <TextField style={textFieldStyles} inputRef={usernameRef} id="username" label="Username" variant="outlined" onChange={(e) => setUsername(e.target.value)} required />
+                        <TextField style={textFieldStyles} id="firstname" label="First name" variant="outlined" onChange={(e) => setFirstName(e.target.value)} required />
+                        <TextField style={textFieldStyles} id="lastname" label="Last name" variant="outlined" onChange={(e) => setLastName(e.target.value)} required />
+                        <TextField style={textFieldStyles} id="password" label="Password" variant="outlined" type="password" onChange={(e) => setPassword(e.target.value)} required />
                         <Button variant="outlined" style={{ color: "black", backgroundColor: "white", border: "none", height: "50px" }} type="submit">
-                            Login
+                            Register
                         </Button>
                         <p>
-                            Don't have an account? Sign up&nbsp;
-                            <Link style={{ fontWeight: "bold" }} to="/register">
+                            Already have an account? Log in&nbsp;
+                            <Link style={{ fontWeight: "bold" }} to="/login">
                                 here
                             </Link>
                         </p>

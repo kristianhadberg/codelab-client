@@ -8,6 +8,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import TopicDetailPage from "./pages/TopicDetailPage";
 import ExercisePage from "./pages/ExercisePage";
 import PrivateRoutes from "./components/PrivateRoute";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                     </Route>
                     <Route path="/" element={<Navigate to="/login" replace={true} />} />
                     <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
                 </Routes>
             </div>
         </div>

@@ -3,6 +3,10 @@
   color: #ffffff;
 }
 
+input, label {
+  color: #ffffff !important;
+}
+
 .main {
   padding: 50px;
 }
