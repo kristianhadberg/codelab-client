@@ -23,7 +23,7 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.user = action.payload;
         },
-        logoutSuccess: (state, action) => {
+        logoutSuccess: (state) => {
             state.isLoading = false;
             state.user = null;
         }
@@ -59,6 +59,12 @@ export function login(username: string, password: string) {
             dispatch(authSlice.actions.hasError(error))
             return false;
         }
+    }
+}
+
+export function logout() {
+    return async (dispatch: Dispatch) => {
+        dispatch(authSlice.actions.logoutSuccess())
     }
 }
 

@@ -1,12 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import RouteIcon from "@mui/icons-material/Route";
 import { Typography } from "@mui/material";
-import { useAppSelector } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { logout } from "../redux/auth/auth";
 
 const SideNav = () => {
     const user = useAppSelector((state) => state.user);
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate("/login");
+    };
 
     return (
         <div className="sidenav">
@@ -15,6 +23,7 @@ const SideNav = () => {
             </Typography>
             {user.user && (
                 <nav style={{ paddingTop: "20px" }}>
+                    <p>Hi, {user.user.firstName}</p>
                     <ul>
                         <li>
                             <Link to="/topics">
@@ -31,6 +40,11 @@ const SideNav = () => {
                                     <p>Learning Path</p>
                                 </div>
                             </Link>
+                        </li>
+                        <li>
+                            <div onClick={handleLogout} style={{ cursor: "pointer" }} className="sidenav-link logout">
+                                <p>Log out</p>
+                            </div>
                         </li>
                     </ul>
                 </nav>

@@ -1,6 +1,8 @@
 export type IUser = {
     id: number,
     username: string,
+    firstName: string,
+    lastName: string,
 }
 
 export type IUserState = {

@@ -36,11 +36,9 @@ export function getTopics() {
     return async (dispatch: Dispatch) => {
       dispatch(topicsSlice.actions.startLoading());
       try {
-        // const response = await axios.get(`/api/get_badges/${id}`);
         const response = await fetch('http://localhost:5214/api/topics').then(response => response.json());
         dispatch(topicsSlice.actions.getTopicsSuccess(response));
         return true;
-        // console.log(response.data);
       } catch (error) {
         console.log(error);
         // let errorMessage = '';
