@@ -3,6 +3,7 @@ export type IUser = {
     username: string,
     firstName: string,
     lastName: string,
+    token: string
 }
 
 export type IUserState = {
