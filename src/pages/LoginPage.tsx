@@ -34,12 +34,12 @@ export default function LoginPage() {
 
     return (
         <>
-            <div>
-                <form style={{ display: "flex", justifyContent: "center" }} onSubmit={handleSubmit}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "80vh" }}>
+                <form style={{ display: "flex", justifyContent: "center", width: "100%" }} onSubmit={handleSubmit}>
                     <FormControl style={{ width: "50%" }}>
                         <TextField style={textFieldStyles} inputRef={usernameRef} id="username" label="Username" variant="outlined" onChange={(e) => setUsername(e.target.value)} required error={usernameError} />
                         <TextField style={textFieldStyles} id="password" label="Password" variant="outlined" type="password" onChange={(e) => setPassword(e.target.value)} required error={passwordError} />
-                        <Button variant="outlined" style={{ marginTop: "20px", color: "black", backgroundColor: "white", border: "none", height: "50px" }} type="submit">
+                        <Button variant="outlined" style={{ color: "black", backgroundColor: "white", border: "none", height: "50px" }} type="submit">
                             Login
                         </Button>
                         <p>Don't have an account? Sign up here</p>
@@ -52,7 +52,7 @@ export default function LoginPage() {
 
 const textFieldStyles = {
     backgroundColor: "#34444D",
-    marginTop: "20px",
     borderRadius: "5px",
+    marginBottom: "20px",
     color: "#fffff",
 };

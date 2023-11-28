@@ -67,11 +67,16 @@ const ExercisePage = () => {
                                         Passed
                                     </Typography>
                                 ) : (
-                                    <div>
-                                        <Typography sx={{ width: "100%", textAlign: "center" }} variant="h6">
+                                    <div style={{ width: "50%" }}>
+                                        <Typography sx={{ textAlign: "center" }} variant="h6">
                                             {failedCases}
                                         </Typography>
-                                        <Typography sx={{ width: "100%", textAlign: "center" }} color="error" variant="h6">
+                                        {error && (
+                                            <Typography sx={{ textAlign: "center" }} variant="h6">
+                                                {error}
+                                            </Typography>
+                                        )}
+                                        <Typography sx={{ textAlign: "center" }} color="error" variant="h6">
                                             Failed
                                         </Typography>
                                     </div>
@@ -93,7 +98,7 @@ const TestCases = ({ testCases }: Props) => {
     return (
         <>
             {testCases.map((testCase, index) => (
-                <>
+                <div key={index}>
                     <Typography variant="h6" style={{ marginTop: "20px" }}>
                         Test case {index + 1}:
                     </Typography>
@@ -107,7 +112,7 @@ const TestCases = ({ testCases }: Props) => {
                             <Typography>{testCase.expectedOutput}</Typography>
                         </div>
                     </code>
-                </>
+                </div>
             ))}
         </>
     );

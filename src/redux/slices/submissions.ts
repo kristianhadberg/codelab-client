@@ -39,6 +39,11 @@ const submissionsSlice = createSlice({
         state.isSubmitting = false;
         state.submissions = [newSubmission, ...state.submissions]
       },
+      hasError(state, action) {
+        state.isSubmitting = false;
+        state.passed = false;
+        state.error = action.payload;
+      },
       postSubmissionFailed(state, action,) {
         state.isSubmitting = false;
         state.passed = false;
@@ -96,7 +101,8 @@ export function getSubmissions() {
             return true;
         } catch (error) {
             console.log(error)
-            dispatch(submissionsSlice.actions.postSubmissionFailed([]));
+            // dispatch(submissionsSlice.actions.postSubmissionFailed([]));
+            dispatch(submissionsSlice.actions.hasError("Compilation error"));
             return false;
         }
     };

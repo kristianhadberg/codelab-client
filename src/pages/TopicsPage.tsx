@@ -28,7 +28,7 @@ export default function TopicsPage() {
                                     <Typography variant="h5">{t.name}</Typography>
                                 </Link>
                                 <span>&nbsp;-&nbsp;</span>
-                                <Typography variant="h6">learn more about arrays and collections</Typography>
+                                <Typography variant="h6">learn more about {t.name.toLocaleLowerCase()}</Typography>
                             </div>
                         ))}
                     </div>
