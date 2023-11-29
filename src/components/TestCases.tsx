@@ -1,0 +1,32 @@
+import { Typography } from "@mui/material";
+import { ITestCase } from "../@types/testCase";
+
+type Props = {
+    testCases: ITestCase[];
+};
+
+const TestCases = ({ testCases }: Props) => {
+    return (
+        <>
+            {testCases.map((testCase, index) => (
+                <div key={index}>
+                    <Typography variant="h6" style={{ marginTop: "20px" }}>
+                        Test case {index + 1}:
+                    </Typography>
+                    <code style={{ padding: "10px", display: "block", backgroundColor: "#3c4d57", borderRadius: "5px" }}>
+                        <div style={{ display: "flex" }}>
+                            <Typography fontWeight="bold">Input: &nbsp;</Typography>
+                            <Typography>{testCase.input}</Typography>
+                        </div>
+                        <div style={{ display: "flex" }}>
+                            <Typography fontWeight="bold">Expected output: &nbsp;</Typography>
+                            <Typography>{testCase.expectedOutput}</Typography>
+                        </div>
+                    </code>
+                </div>
+            ))}
+        </>
+    );
+};
+
+export default TestCases;

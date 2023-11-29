@@ -1,6 +1,8 @@
 export type ISubmission = {
+    id?: string,
     submittedCode: string,
     exerciseId: string,
+    submissionDate?: Date;
 }
 
 export type ISubmissionState = {

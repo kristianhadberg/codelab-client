@@ -37,7 +37,7 @@ const submissionsSlice = createSlice({
         const newSubmission = action.payload;
         state.passed = true;
         state.isSubmitting = false;
-        state.submissions = [newSubmission, ...state.submissions]
+        state.submissions = [...state.submissions, newSubmission]
       },
       hasError(state, action) {
         state.isSubmitting = false;
@@ -94,19 +94,34 @@ export function getSubmissions() {
 
             const responseData = await response.json();
             if (responseData.status.description === "Accepted") {
-              dispatch(submissionsSlice.actions.postSubmissionsSuccess(responseData.stdout));
+              dispatch(submissionsSlice.actions.postSubmissionsSuccess(responseData.submissionResponse));
+              console.log(responseData)
             } else {
               dispatch(submissionsSlice.actions.postSubmissionFailed(responseData.stdout));
             }
             return true;
         } catch (error) {
             console.log(error)
-            // dispatch(submissionsSlice.actions.postSubmissionFailed([]));
             dispatch(submissionsSlice.actions.hasError("Compilation error"));
             return false;
         }
     };
 }
+
+export function getSubmissionsByExerciseId(exerciseId : string) {
+  return async (dispatch: Dispatch) => {
+    dispatch(submissionsSlice.actions.startLoading());
+    try {
+      const response = await fetch(`http://localhost:5214/api/submissions/exercise/${exerciseId}`).then(response => response.json());
+      dispatch(submissionsSlice.actions.getSubmissionsSuccess(response));
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
+}
+
 
 export function clearPassedState() {
     return async (dispatch: Dispatch) => {

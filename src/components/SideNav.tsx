@@ -29,7 +29,7 @@ const SideNav = () => {
                             <NavLink
                                 to="topics"
                                 style={({ isActive }) => ({
-                                    color: isActive ? "#7695a8" : "",
+                                    color: isActive ? "#99D77A" : "",
                                 })}
                             >
                                 <div className="sidenav-link">
@@ -42,7 +42,7 @@ const SideNav = () => {
                             <NavLink
                                 to="learning-path"
                                 style={({ isActive }) => ({
-                                    color: isActive ? "#7695a8" : "",
+                                    color: isActive ? "#99D77A" : "",
                                 })}
                             >
                                 <div className="sidenav-link">
