@@ -15,6 +15,7 @@ const ExercisePage = () => {
     const dispatch = useAppDispatch();
     const { exerciseId } = useParams<{ exerciseId: string }>();
     const { exercise, isLoading } = useAppSelector((state) => state.exercises);
+    const { user } = useAppSelector((state) => state.user);
     const [editorValue, setEditorValue] = useState("");
     const [headerStateIsDescription, setHeaderStateIsDescription] = useState(true);
     const { submissions, isSubmitting, passed, failedCases, error } = useAppSelector((state) => state.submissions);
@@ -28,8 +29,9 @@ const ExercisePage = () => {
 
     // Handler for creating new submission
     const handleSubmission = () => {
-        if (editorRef.current != null && exerciseId != null) {
+        if (editorRef.current != null && exerciseId != null && user?.id != null) {
             const newSubmission: ISubmission = {
+                userId: user?.id,
                 submittedCode: editorRef.current.getValue(),
                 exerciseId: exerciseId,
             };

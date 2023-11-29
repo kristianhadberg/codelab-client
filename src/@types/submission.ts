@@ -1,5 +1,6 @@
 export type ISubmission = {
-    id?: string,
+    id?: number,
+    userId: number,
     submittedCode: string,
     exerciseId: string,
     submissionDate?: Date;

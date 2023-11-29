@@ -71,6 +71,7 @@ export function getSubmissions() {
 
   export function createSubmission(submission: ISubmission) {
     const obj = {
+        userId: submission.userId,
         submittedCode: submission.submittedCode,
         exerciseId: submission.exerciseId,
     }
@@ -95,7 +96,6 @@ export function getSubmissions() {
             const responseData = await response.json();
             if (responseData.status.description === "Accepted") {
               dispatch(submissionsSlice.actions.postSubmissionsSuccess(responseData.submissionResponse));
-              console.log(responseData)
             } else {
               dispatch(submissionsSlice.actions.postSubmissionFailed(responseData.stdout));
             }
