@@ -3,6 +3,7 @@ import topicsReducer from '../redux/slices/topics'
 import exercisesReducer from '../redux/slices/exercises'
 import submissionsReducer from '../redux/slices/submissions'
 import userReducer from './auth/auth'
+import learningPathsReducer from './slices/learningPaths';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     topics: topicsReducer,
     exercises: exercisesReducer,
     submissions: submissionsReducer,
+    learningPaths: learningPathsReducer,
   },
 });
 
