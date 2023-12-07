@@ -7,6 +7,7 @@ export type IExercise = {
     starterCode: string,
     expectedOutput: string
     submissionCount: number,
+    isLearningPathExercise: boolean,
     testCases: ITestCase[]
 }
 

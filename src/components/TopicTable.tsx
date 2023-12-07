@@ -19,18 +19,20 @@ const TopicTable = ({ exercises }: Props) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {exercises.map((e) => (
-                        <TableRow key={e.id}>
-                            <TableCell>
-                                <Link style={{ color: "black" }} to={`/exercise/${e.id}`}>
-                                    {e.name}
-                                </Link>
-                            </TableCell>
-                            <TableCell>temp</TableCell>
-                            <TableCell>{e.submissionCount}</TableCell>
-                            <TableCell>temp</TableCell>
-                        </TableRow>
-                    ))}
+                    {exercises
+                        .filter((e) => !e.isLearningPathExercise)
+                        .map((e) => (
+                            <TableRow key={e.id}>
+                                <TableCell>
+                                    <Link style={{ color: "black" }} to={`/exercise/${e.id}`}>
+                                        {e.name}
+                                    </Link>
+                                </TableCell>
+                                <TableCell>temp</TableCell>
+                                <TableCell>{e.submissionCount}</TableCell>
+                                <TableCell>temp</TableCell>
+                            </TableRow>
+                        ))}
                     {exercises.length === 0 && (
                         <TableRow>
                             <TableCell sx={{ width: "100%" }}>No exercises found.</TableCell>
