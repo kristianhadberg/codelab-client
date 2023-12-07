@@ -23,14 +23,16 @@ export default function LearningPathPage() {
                     <Typography variant="h6">Choose your path.</Typography>
                     <div className="learningPaths" style={{ marginTop: "50px", display: "flex" }}>
                         {learningPaths.map((lp) => (
-                            <Card variant="outlined" sx={{ minWidth: 275, padding: 2, marginRight: "10px", backgroundColor: "#34444D" }}>
+                            <Card key={lp.id} variant="outlined" sx={{ minWidth: 275, padding: 2, marginRight: "10px", backgroundColor: "#34444D" }}>
                                 <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
                                     <Typography color={"white"} variant="h6">
                                         {lp.name}
                                     </Typography>
-                                    <Button variant="outlined" size="small">
-                                        GO
-                                    </Button>
+                                    <Link to={`/learning-path/${lp.id}`}>
+                                        <Button variant="outlined" size="small">
+                                            GO
+                                        </Button>
+                                    </Link>
                                 </CardContent>
                             </Card>
                         ))}

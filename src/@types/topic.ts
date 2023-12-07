@@ -1,7 +1,10 @@
+import { IExercise } from "./exercise";
+
 export type ITopic = {
     id: number,
     name: string,
     description: string
+    exercises: IExercise[]
 }
 
 export type ITopicState = {

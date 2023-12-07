@@ -31,7 +31,11 @@ const TopicTable = ({ exercises }: Props) => {
                             <TableCell>temp</TableCell>
                         </TableRow>
                     ))}
-                    {exercises.length === 0 && <TableCell sx={{ width: "100%" }}>No exercises found.</TableCell>}
+                    {exercises.length === 0 && (
+                        <TableRow>
+                            <TableCell sx={{ width: "100%" }}>No exercises found.</TableCell>
+                        </TableRow>
+                    )}
                 </TableBody>
             </Table>
         </TableContainer>

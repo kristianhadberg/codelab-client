@@ -55,6 +55,20 @@ export function getTopics() {
     };
   }
 
+  export function getTopicsByLearningPathId(learningPathId: string) {
+    return async (dispatch: Dispatch) => {
+      dispatch(topicsSlice.actions.startLoading());
+      try {
+        const response = await fetch(`http://localhost:5214/api/topics/learning-path/${learningPathId}`).then(response => response.json());
+        dispatch(topicsSlice.actions.getTopicsSuccess(response));
+        return true;
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+    };
+  }
+
   export function getTopic(id: string) {
     return async (dispatch: Dispatch) => {
       dispatch(topicsSlice.actions.startLoading());

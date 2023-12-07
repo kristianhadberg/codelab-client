@@ -7,6 +7,7 @@ const initialState: ILearningPathState = {
     isLoading: false,
     error: null,
     learningPaths: [],
+    learningPath: null
 }
 
 const learningPathSlice = createSlice({
@@ -18,11 +19,16 @@ const learningPathSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       },
-      // GET Learning Path
+      // GET Learning Paths
       getLearningPathsSuccess(state, action) {
         state.isLoading = false;
         state.learningPaths = action.payload;
       },
+      // GET Learning path
+      getLearningPathSuccess(state, action) {
+        state.isLoading = false;
+        state.learningPath = action.payload;
+      }
     },
   });
 
@@ -35,32 +41,23 @@ export function getLearningPaths() {
         return true;
       } catch (error) {
         console.log(error);
-        // let errorMessage = '';
-        // if (error?.errors?.json._schema) {
-        //   errorMessage = error?.errors?.json._schema[0];
-        // } else if (error?.errors?.json) {
-        //   errorMessage = error?.errors.json[Object.keys(error?.errors.json)[0]];
-        // } else {
-        //   errorMessage = error?.message;
-        // }
-        // dispatch(slice.actions.hasError(errorMessage));
         return false;
       }
     };
   }
 
-//   export function getTopic(id: string) {
-//     return async (dispatch: Dispatch) => {
-//       dispatch(topicsSlice.actions.startLoading());
-//       try {
-//         const response = await fetch(`http://localhost:5214/api/topics/${id}`).then(response => response.json());
-//         dispatch(topicsSlice.actions.getTopicSuccess(response));
-//         return true;
-//       } catch (error) {
-//         console.log(error);
-//         return false;
-//       }
-//     };
-//   }
+  export function getLearningPath(id: string) {
+    return async (dispatch: Dispatch) => {
+      dispatch(learningPathSlice.actions.startLoading());
+      try {
+        const response = await fetch(`http://localhost:5214/api/learning-paths/${id}`).then(response => response.json());
+        dispatch(learningPathSlice.actions.getLearningPathSuccess(response));
+        return true;
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+    };
+  }
 
 export default learningPathSlice.reducer;

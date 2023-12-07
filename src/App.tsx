@@ -9,6 +9,7 @@ import TopicDetailPage from "./pages/TopicDetailPage";
 import ExercisePage from "./pages/ExercisePage";
 import PrivateRoutes from "./components/PrivateRoute";
 import RegisterPage from "./pages/RegisterPage";
+import LearningPathDetailPage from "./pages/LearningPathDetailPage";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                         <Route path="/topics/:topicId" element={<TopicDetailPage />} />
                         <Route path="/exercise/:exerciseId" element={<ExercisePage />} />
                         <Route path="/learning-path" element={<LearningPathPage />} />
+                        <Route path="/learning-path/:learningPathId" element={<LearningPathDetailPage />} />
                     </Route>
                     <Route path="/" element={<Navigate to="/login" replace={true} />} />
                     <Route path="/login" element={<LoginPage />} />
