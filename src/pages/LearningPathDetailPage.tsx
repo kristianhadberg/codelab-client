@@ -32,8 +32,8 @@ const LearningPathDetailPage = () => {
                     </div>
                     <div style={{ display: "flex" }}>
                         {learningPath?.topics.map((t, index) => (
-                            <div key={t.id} style={{ display: "flex", alignItems: "center", marginTop: "50px" }}>
-                                <LearningPathTopicCard topic={t}></LearningPathTopicCard>
+                            <div key={t.id} style={{ display: "flex", alignItems: "flex-start", marginTop: "50px" }}>
+                                {index === 0 ? <LearningPathTopicCard firstElement={true} topic={t}></LearningPathTopicCard> : <LearningPathTopicCard topic={t}></LearningPathTopicCard>}
                                 {index < topics.length - 1 && <ArrowForwardIcon sx={{ margin: "20px" }} />}
                             </div>
                         ))}

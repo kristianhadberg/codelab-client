@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardActions, CardContent, Collapse, IconButton, IconButtonProps, Typography, styled } from "@mui/material";
 import { ITopic } from "../@types/topic";
 // import { ExpandMore } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import exp from "constants";
 
 type Props = {
+    firstElement?: boolean;
     topic: ITopic;
 };
 
@@ -26,8 +28,14 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     }),
 }));
 
-export default function LearningPathTopicCard({ topic }: Props) {
+export default function LearningPathTopicCard({ firstElement, topic }: Props) {
     const [expanded, setExpanded] = useState(false);
+
+    useEffect(() => {
+        if (firstElement !== undefined && firstElement) {
+            setExpanded(true);
+        }
+    }, [firstElement]);
 
     const handleClick = () => {
         setExpanded(!expanded);
@@ -47,7 +55,7 @@ export default function LearningPathTopicCard({ topic }: Props) {
                 <CardContent sx={{ backgroundColor: "#7692a1", borderRadius: "5px" }}>
                     <Typography variant="h6">Exercises</Typography>
                     {topic.exercises.map((e) => (
-                        <Link style={{ color: "black" }} to={`/exercise/${e.id}`}>
+                        <Link key={e.id} style={{ color: "black" }} to={`/exercise/${e.id}`}>
                             <Typography color={"white"} variant="h6">
                                 {e.name}
                             </Typography>
