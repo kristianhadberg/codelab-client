@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { IExercise } from "../@types/exercise";
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
 
 type Props = {
     exercises: IExercise[];
@@ -30,7 +32,7 @@ const TopicTable = ({ exercises }: Props) => {
                                 </TableCell>
                                 <TableCell>temp</TableCell>
                                 <TableCell>{e.submissionCount}</TableCell>
-                                <TableCell>temp</TableCell>
+                                <TableCell>{e.isCompleted ? <CheckIcon sx={{ color: "green" }} /> : <CloseIcon sx={{ color: "red" }} />}</TableCell>
                             </TableRow>
                         ))}
                     {exercises.length === 0 && (

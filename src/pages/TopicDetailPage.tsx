@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { getTopic } from "../redux/slices/topics";
-import { getExercisesByTopicId } from "../redux/slices/exercises";
+import { getExercisesByTopicId, getExercisesByTopicIdAndUserId } from "../redux/slices/exercises";
 import TopicTable from "../components/TopicTable";
 
 const TopicDetailPage = () => {
@@ -11,13 +11,15 @@ const TopicDetailPage = () => {
     const dispatch = useAppDispatch();
     const { topic, isLoading } = useAppSelector((state) => state.topics);
     const { exercises } = useAppSelector((state) => state.exercises);
+    const { user } = useAppSelector((state) => state.user);
 
     useEffect(() => {
-        if (topicId) {
+        if (topicId && user) {
             dispatch(getTopic(topicId));
-            dispatch(getExercisesByTopicId(topicId));
+            // dispatch(getExercisesByTopicId(topicId));
+            dispatch(getExercisesByTopicIdAndUserId(topicId, user.id));
         }
-    }, [dispatch, topicId]);
+    }, [dispatch, topicId, user]);
 
     return (
         <div>

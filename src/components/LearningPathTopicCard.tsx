@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Card, CardActions, CardContent, Collapse, IconButton, IconButtonProps, Typography, styled } from "@mui/material";
+import { Card, CardActions, CardContent, Collapse, IconButton, IconButtonProps, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, styled } from "@mui/material";
 import { ITopic } from "../@types/topic";
 // import { ExpandMore } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import exp from "constants";
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
 
 type Props = {
     firstElement?: boolean;
@@ -56,13 +57,35 @@ export default function LearningPathTopicCard({ firstElement, topic }: Props) {
                     <Typography sx={{ marginBottom: "20px" }} variant="h6">
                         Exercises
                     </Typography>
-                    {topic.exercises.map((e) => (
+                    <TableContainer component={Paper}>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell sx={{ width: "100%" }}>Name</TableCell>
+                                    <TableCell>Completed?</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {topic.exercises.map((e) => (
+                                    <TableRow key={e.id}>
+                                        <TableCell>
+                                            <Link style={{ color: "black" }} to={`/exercise/${e.id}`}>
+                                                {e.name}
+                                            </Link>
+                                        </TableCell>
+                                        <TableCell sx={{ textAlign: "center" }}>{e.isCompleted ? <CheckIcon sx={{ color: "green" }} /> : <CloseIcon sx={{ color: "red" }} />}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    {/* {topic.exercises.map((e) => (
                         <Link key={e.id} style={{ color: "black" }} to={`/exercise/${e.id}`}>
                             <Typography color={"white"} variant="h6">
                                 {e.name}
                             </Typography>
                         </Link>
-                    ))}
+                    ))} */}
                 </CardContent>
             </Collapse>
         </Card>

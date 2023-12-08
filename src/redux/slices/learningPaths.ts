@@ -60,4 +60,18 @@ export function getLearningPaths() {
     };
   }
 
+  export function getLearningPathByIdAndUserId(id: string, userId: number) {
+    return async (dispatch: Dispatch) => {
+      dispatch(learningPathSlice.actions.startLoading());
+      try {
+        const response = await fetch(`http://localhost:5214/api/learning-paths/${id}/${userId}`).then(response => response.json());
+        dispatch(learningPathSlice.actions.getLearningPathSuccess(response));
+        return true;
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+    };
+  }
+
 export default learningPathSlice.reducer;

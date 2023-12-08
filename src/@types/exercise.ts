@@ -8,6 +8,7 @@ export type IExercise = {
     expectedOutput: string
     submissionCount: number,
     isLearningPathExercise: boolean,
+    isCompleted: boolean,
     testCases: ITestCase[]
 }
 

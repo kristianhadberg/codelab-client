@@ -44,6 +44,20 @@ export function getExercisesByTopicId(topicId: string) {
     };
   }
 
+  export function getExercisesByTopicIdAndUserId(topicId: string, userId: number) {
+    return async (dispatch: Dispatch) => {
+      dispatch(exercisesSlice.actions.startLoading());
+      try {
+        const response = await fetch(`http://localhost:5214/api/exercises/topic/${topicId}/${userId}`).then(response => response.json());
+        dispatch(exercisesSlice.actions.getExercisesSuccess(response));
+        return true;
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+    };
+  }
+
 export function getExerciseByid(exerciseId: string) {
     return async (dispatch: Dispatch) => {
       dispatch(exercisesSlice.actions.startLoading());

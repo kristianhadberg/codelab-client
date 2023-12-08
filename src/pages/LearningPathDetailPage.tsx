@@ -4,7 +4,7 @@ import { Card, CardActions, CircularProgress, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { getTopicsByLearningPathId } from "../redux/slices/topics";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { getLearningPath } from "../redux/slices/learningPaths";
+import { getLearningPathByIdAndUserId } from "../redux/slices/learningPaths";
 import { ExpandMore } from "@mui/icons-material";
 import LearningPathTopicCard from "../components/LearningPathTopicCard";
 
@@ -13,13 +13,14 @@ const LearningPathDetailPage = () => {
     const dispatch = useAppDispatch();
     const { topics, isLoading } = useAppSelector((state) => state.topics);
     const { learningPath } = useAppSelector((state) => state.learningPaths);
+    const { user } = useAppSelector((state) => state.user);
 
     useEffect(() => {
-        if (learningPathId) {
+        if (learningPathId && user) {
             dispatch(getTopicsByLearningPathId(learningPathId));
-            dispatch(getLearningPath(learningPathId));
+            dispatch(getLearningPathByIdAndUserId(learningPathId, user.id));
         }
-    }, [dispatch, learningPathId]);
+    }, [dispatch, learningPathId, user]);
 
     return (
         <div>
