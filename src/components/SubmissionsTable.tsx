@@ -8,7 +8,13 @@ type Props = {
 
 const columns: GridColDef[] = [
     { field: "id", headerName: "Id", width: 200, disableColumnMenu: true },
-    { field: "submissionDate", headerName: "Date", disableColumnMenu: true, width: 200, valueGetter: (params: GridValueGetterParams) => (params.row.submissionDate ? new Date(params.row.submissionDate).toLocaleDateString() : "") },
+    {
+        field: "submissionDate",
+        headerName: "Date",
+        disableColumnMenu: true,
+        width: 200,
+        valueGetter: (params: GridValueGetterParams) => (params.row.submissionDate ? new Date(params.row.submissionDate).toLocaleDateString() : ""),
+    },
 ];
 const SubmissionsTable = ({ submissions, handleClick }: Props) => {
     return (

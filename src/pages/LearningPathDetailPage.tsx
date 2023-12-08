@@ -30,13 +30,21 @@ const LearningPathDetailPage = () => {
                     <div className="header">
                         <Typography variant="h3">{learningPath?.name}</Typography>
                     </div>
-                    <div style={{ display: "flex" }}>
-                        {learningPath?.topics.map((t, index) => (
-                            <div key={t.id} style={{ display: "flex", alignItems: "flex-start", marginTop: "50px" }}>
-                                {index === 0 ? <LearningPathTopicCard firstElement={true} topic={t}></LearningPathTopicCard> : <LearningPathTopicCard topic={t}></LearningPathTopicCard>}
-                                {index < topics.length - 1 && <ArrowForwardIcon sx={{ margin: "20px" }} />}
-                            </div>
-                        ))}
+                    <div>
+                        <Typography sx={{ marginTop: "20px" }} variant="h5">
+                            Your progress
+                        </Typography>
+                    </div>
+                    <div style={{ marginTop: "50px" }}>
+                        <Typography variant="h5">Topics</Typography>
+                        <div style={{ display: "flex" }}>
+                            {learningPath?.topics.map((t, index) => (
+                                <div key={t.id} style={{ display: "flex", alignItems: "flex-start", marginTop: "20px" }}>
+                                    {index === 0 ? <LearningPathTopicCard firstElement={true} topic={t}></LearningPathTopicCard> : <LearningPathTopicCard topic={t}></LearningPathTopicCard>}
+                                    {index < topics.length - 1 && <ArrowForwardIcon sx={{ margin: "20px" }} />}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </>
             )}

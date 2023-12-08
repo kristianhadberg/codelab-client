@@ -53,7 +53,9 @@ export default function LearningPathTopicCard({ firstElement, topic }: Props) {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent sx={{ backgroundColor: "#7692a1", borderRadius: "5px" }}>
-                    <Typography variant="h6">Exercises</Typography>
+                    <Typography sx={{ marginBottom: "20px" }} variant="h6">
+                        Exercises
+                    </Typography>
                     {topic.exercises.map((e) => (
                         <Link key={e.id} style={{ color: "black" }} to={`/exercise/${e.id}`}>
                             <Typography color={"white"} variant="h6">
