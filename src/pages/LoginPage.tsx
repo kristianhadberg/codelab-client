@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../redux/auth/auth";
 import { useAppDispatch } from "../app/hooks";
+import { withEmotionCache } from "@emotion/react";
 
 export default function LoginPage() {
     const [username, setUsername] = useState("");
@@ -43,7 +44,7 @@ export default function LoginPage() {
                         <Button variant="outlined" style={{ color: "black", backgroundColor: "white", border: "none", height: "50px" }} type="submit">
                             Login
                         </Button>
-                        <p>
+                        <p style={{ fontWeight: "200" }}>
                             Don't have an account? Sign up&nbsp;
                             <Link style={{ fontWeight: "bold" }} to="/register">
                                 here

@@ -41,7 +41,7 @@ export default function RegisterPage() {
                         <Button variant="outlined" style={{ color: "black", backgroundColor: "white", border: "none", height: "50px" }} type="submit">
                             Register
                         </Button>
-                        <p>
+                        <p style={{ fontWeight: "200" }}>
                             Already have an account? Log in&nbsp;
                             <Link style={{ fontWeight: "bold" }} to="/login">
                                 here
