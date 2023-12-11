@@ -29,6 +29,8 @@ const ExercisePage = () => {
 
     // Handler for creating new submission
     const handleSubmission = () => {
+        if (isSubmitting) return;
+
         if (editorRef.current != null && exerciseId != null && user?.id != null) {
             const newSubmission: ISubmission = {
                 userId: user?.id,
