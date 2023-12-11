@@ -38,9 +38,10 @@ const LearningPathDetailPage = () => {
                     </div>
                     <div style={{ marginTop: "50px" }}>
                         <Typography variant="h5">Topics</Typography>
-                        <div style={{ display: "flex" }}>
+                        <div style={{ display: "flex", flexWrap: "wrap" }}>
                             {learningPath?.topics.map((t, index) => (
                                 <div key={t.id} style={{ display: "flex", alignItems: "flex-start", marginTop: "20px" }}>
+                                    {/* only adds the arrow if it's not the last topic in the list */}
                                     {index === 0 ? <LearningPathTopicCard firstElement={true} topic={t}></LearningPathTopicCard> : <LearningPathTopicCard topic={t}></LearningPathTopicCard>}
                                     {index < topics.length - 1 && <ArrowForwardIcon sx={{ margin: "20px" }} />}
                                 </div>

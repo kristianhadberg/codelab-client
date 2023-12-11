@@ -7,7 +7,7 @@ type Props = {
 
 const TestCases = ({ testCases }: Props) => {
     return (
-        <>
+        <div style={{ marginTop: "50px" }}>
             {testCases.map((testCase, index) => (
                 <div key={index}>
                     <Typography variant="h6" style={{ marginTop: "20px" }}>
@@ -25,7 +25,7 @@ const TestCases = ({ testCases }: Props) => {
                     </code>
                 </div>
             ))}
-        </>
+        </div>
     );
 };
 

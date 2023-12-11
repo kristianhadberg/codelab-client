@@ -10,7 +10,9 @@ const ExerciseDescription = ({ exercise }: Props) => {
     return (
         <>
             <Typography variant="h4">{exercise?.name}</Typography>
-            <Typography variant="body2">{exercise?.description}</Typography>
+            <Typography sx={{ marginTop: "10px" }} variant="body2">
+                {exercise?.description}
+            </Typography>
             {exercise?.expectedOutput !== "Success" && (
                 <>
                     <Typography variant="h4" style={{ marginTop: "50px" }}>

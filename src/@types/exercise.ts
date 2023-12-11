@@ -1,5 +1,11 @@
 import { ITestCase } from "./testCase";
 
+export enum Difficulty {
+    BEGINNER = "Beginner",
+    INTERMEDIATE = "Intermediate",
+    ADVANCED = "Advanced"
+}
+
 export type IExercise = {
     id: number,
     name: string,
@@ -8,6 +14,7 @@ export type IExercise = {
     expectedOutput: string
     submissionCount: number,
     isLearningPathExercise: boolean,
+    difficulty: Difficulty
     isCompleted: boolean,
     testCases: ITestCase[]
 }
