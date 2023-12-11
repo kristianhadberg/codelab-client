@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { getTopics } from "../redux/slices/topics";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { CircularProgress, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CircularProgress, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function TopicsPage() {
@@ -21,15 +21,23 @@ export default function TopicsPage() {
                 <>
                     <Typography variant="h3">Topics</Typography>
                     <Typography variant="h6">Select a topic you want to learn about.</Typography>
-                    <div className="topics" style={{ marginTop: "50px" }}>
+                    <div className="topics" style={{ display: "flex", flexWrap: "wrap", marginTop: "50px" }}>
                         {topics.map((t) => (
-                            <div key={t.id} style={{ display: "flex", alignItems: "center" }}>
-                                <Link to={`/topics/${t.id}`}>
-                                    <Typography variant="h5">{t.name}</Typography>
-                                </Link>
-                                <span>&nbsp;-&nbsp;</span>
-                                <Typography variant="h6">learn more about {t.name.toLocaleLowerCase()}</Typography>
-                            </div>
+                            <Card key={t.id} variant="outlined" sx={{ minWidth: 275, padding: 1, margin: "10px", backgroundColor: "#34444D" }}>
+                                <CardContent>
+                                    <Typography sx={{ fontSize: 16 }} fontWeight={"bold"} color={"white"}>
+                                        {t.name}
+                                    </Typography>
+                                    <Typography variant="body2" fontWeight={"100"} color={"white"}>
+                                        Learn more about {t.name.toLowerCase()}.
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <Link to={`/topics/${t.id}`}>
+                                        <Button size="small">Learn More</Button>
+                                    </Link>
+                                </CardActions>
+                            </Card>
                         ))}
                     </div>
                 </>
