@@ -7,7 +7,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 
 type Props = {
-    firstElement?: boolean;
+    preExpanded?: boolean;
     topic: ITopic;
 };
 
@@ -28,14 +28,14 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     }),
 }));
 
-export default function LearningPathTopicCard({ firstElement, topic }: Props) {
+export default function LearningPathTopicCard({ preExpanded, topic }: Props) {
     const [expanded, setExpanded] = useState(false);
 
     useEffect(() => {
-        if (firstElement !== undefined && firstElement) {
+        if (preExpanded !== undefined && preExpanded) {
             setExpanded(true);
         }
-    }, [firstElement]);
+    }, [preExpanded]);
 
     const handleClick = () => {
         setExpanded(!expanded);
@@ -60,7 +60,7 @@ export default function LearningPathTopicCard({ firstElement, topic }: Props) {
     };
 
     return (
-        <Card sx={{ backgroundColor: "#34444D", padding: "30px", minWidth: 800 }}>
+        <Card sx={{ backgroundColor: "#34444D", padding: "30px", minWidth: 600 }}>
             <div style={{ textAlign: "center" }}>
                 <Typography sx={{ fontWeight: "200" }} variant="h6" color={"white"}>
                     Current topic
@@ -100,7 +100,7 @@ export default function LearningPathTopicCard({ firstElement, topic }: Props) {
                         </TableHead>
                         <TableBody>
                             {topic.exercises.map((e) => (
-                                <TableRow key={e.id}>
+                                <TableRow key={`row-${e.id}`}>
                                     <TableCell>
                                         <Link style={{ color: "black" }} to={`/exercise/${e.id}`}>
                                             {e.name}

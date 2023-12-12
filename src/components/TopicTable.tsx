@@ -9,7 +9,6 @@ type Props = {
 };
 
 const TopicTable = ({ exercises }: Props) => {
-    console.log(exercises);
     return (
         <TableContainer component={Paper} sx={{ width: "80%" }}>
             <Table sx={{ minWidth: 300 }}>

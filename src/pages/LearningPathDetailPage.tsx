@@ -5,12 +5,13 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { getTopicsByLearningPathId } from "../redux/slices/topics";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { getLearningPathByIdAndUserId } from "../redux/slices/learningPaths";
-import { ExpandMore, NavigateBefore, NavigateNext } from "@mui/icons-material";
+import { ExpandMore, Height, NavigateBefore, NavigateNext } from "@mui/icons-material";
 import LearningPathTopicCard from "../components/LearningPathTopicCard";
 
 import Box from "@mui/material/Box";
 import { IconButton } from "@mui/material";
 import { ITopic } from "../@types/topic";
+import { relative } from "path";
 
 const LearningPathDetailPage = () => {
     const { learningPathId } = useParams<{ learningPathId: string }>();
@@ -58,7 +59,6 @@ type Props = {
 function Carousel({ topics }: Props) {
     const [currentPage, setCurrentPage] = useState(0);
     const [slideDirection, setSlideDirecetion] = useState<"right" | "left" | undefined>("left");
-
     const cardsPerPage = 1;
 
     const handleNextPage = () => {
@@ -71,6 +71,7 @@ function Carousel({ topics }: Props) {
         setCurrentPage((prevPage) => prevPage - 1);
     };
 
+    // function to get the topic which is next in the path
     const getCurrentTopic = () => {
         let topicStatus = [];
 
@@ -93,22 +94,25 @@ function Carousel({ topics }: Props) {
     return (
         <>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", alignContent: "center", justifyContent: "center", height: "400px" }}>
+                <Box sx={{ position: "relative", height: "200px", width: "200px", backgroundColor: "#34444D", visibility: currentPage === 0 ? "hidden" : "block" }}>
+                    <Typography sx={{ textAlign: "center", padding: "70px 0;" }} variant="h6">
+                        {topics[currentPage - 1]?.name || ""}
+                    </Typography>
+                </Box>
                 <IconButton onClick={handlePrevPage} sx={{ margin: 5 }} disabled={currentPage === 0} color="primary">
                     <NavigateBefore sx={{ fontSize: 40 }} />
                 </IconButton>
-                <Box sx={{ width: "800px", height: "100%" }}>
+                <Box sx={{ width: "600px", height: "100%" }}>
                     {topics.map((topic, index) => (
-                        <>
-                            <Box key={`box-${index}`} sx={{ width: "100%", height: "100%", display: currentPage === index ? "block" : "none" }}>
-                                <Slide direction={slideDirection} in={currentPage === index}>
-                                    <Stack spacing={2} direction="row" alignContent="center" justifyContent="center">
-                                        {topics.slice(index * cardsPerPage, index * cardsPerPage + cardsPerPage).map((subTopic, subIndex) => (
-                                            <LearningPathTopicCard key={topic.id} topic={subTopic} />
-                                        ))}
-                                    </Stack>
-                                </Slide>
-                            </Box>
-                        </>
+                        <Box key={`box-${index}`} sx={{ width: "100%", height: "100%", display: currentPage === index ? "block" : "none" }}>
+                            <Slide direction={slideDirection} in={currentPage === index}>
+                                <Stack spacing={2} direction="row" alignContent="center" justifyContent="center">
+                                    {topics.slice(index * cardsPerPage, index * cardsPerPage + cardsPerPage).map((subTopic, subIndex) => (
+                                        <LearningPathTopicCard key={`topic-card-${subIndex}`} topic={subTopic} />
+                                    ))}
+                                </Stack>
+                            </Slide>
+                        </Box>
                     ))}
                 </Box>
                 <IconButton
@@ -121,6 +125,11 @@ function Carousel({ topics }: Props) {
                 >
                     <NavigateNext sx={{ fontSize: 40 }} />
                 </IconButton>
+                <Box sx={{ position: "relative", height: "200px", width: "200px", backgroundColor: "#34444D", visibility: currentPage === topics.length - 1 ? "hidden" : "" }}>
+                    <Typography sx={{ textAlign: "center", padding: "70px 0;" }} variant="h6">
+                        {topics[currentPage + 1]?.name || ""}
+                    </Typography>
+                </Box>
             </Box>
         </>
     );
