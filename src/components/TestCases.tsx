@@ -16,11 +16,11 @@ const TestCases = ({ testCases }: Props) => {
                     <code style={{ padding: "10px", display: "block", backgroundColor: "#3c4d57", borderRadius: "5px" }}>
                         <div style={{ display: "flex" }}>
                             <Typography fontWeight="bold">Input: &nbsp;</Typography>
-                            <Typography>{testCase.input}</Typography>
+                            <Typography sx={{ fontWeight: "100" }}>{testCase.input}</Typography>
                         </div>
                         <div style={{ display: "flex" }}>
                             <Typography fontWeight="bold">Expected output: &nbsp;</Typography>
-                            <Typography>{testCase.expectedOutput}</Typography>
+                            <Typography sx={{ fontWeight: "100" }}>{testCase.expectedOutput}</Typography>
                         </div>
                     </code>
                 </div>
