@@ -14,22 +14,32 @@ export default function LearningPathPage() {
     }, [dispatch]);
 
     return (
-        <div>
+        <div style={{ width: "100%", height: "100%" }}>
             {isLoading ? (
                 <CircularProgress />
             ) : (
                 <>
                     <Typography variant="h3">Learning Paths</Typography>
                     <Typography variant="h6">Choose your path.</Typography>
-                    <div className="learningPaths" style={{ marginTop: "50px", display: "flex", flexWrap: "wrap" }}>
+                    <div className="learningPaths" style={{ marginTop: "50px", display: "flex", flexWrap: "nowrap", height: "80%", width: "100%" }}>
                         {learningPaths.map((lp) => (
-                            <Card key={lp.id} variant="outlined" sx={{ minWidth: 275, padding: 2, marginRight: "10px", backgroundColor: "#34444D" }}>
-                                <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
-                                    <Typography color={"white"} variant="h6">
+                            <Card key={lp.id} variant="outlined" sx={{ width: "50%", padding: 2, marginRight: "10px", backgroundColor: "#34444D", textAlign: "center" }}>
+                                <CardContent sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
+                                    <Typography color={"white"} variant="h2">
                                         {lp.name}
                                     </Typography>
+                                    <div>
+                                        <Typography color="white" variant="h5" fontWeight={"bold"}>
+                                            {lp.name} contains the following topics:
+                                        </Typography>
+                                        {lp.topics.map((t) => (
+                                            <Typography sx={{ fontWeight: "200" }} color={"white"} variant="h6">
+                                                {t.name}
+                                            </Typography>
+                                        ))}
+                                    </div>
                                     <Link to={`/learning-path/${lp.id}`}>
-                                        <Button variant="outlined" size="small">
+                                        <Button sx={{ width: "100%", marginBottom: "50px" }} variant="contained" size="large">
                                             GO
                                         </Button>
                                     </Link>

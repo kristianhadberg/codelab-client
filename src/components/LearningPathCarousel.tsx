@@ -46,7 +46,7 @@ export default function Carousel({ topics }: Props) {
     return (
         <>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", alignContent: "center", justifyContent: "center", height: "400px" }}>
-                <Box sx={{ position: "relative", height: "200px", width: "200px", backgroundColor: "#34444D", visibility: currentPage === 0 ? "hidden" : "block" }}>
+                <Box sx={{ height: "200px", width: "200px", borderRadius: "4px", backgroundColor: "#34444D", visibility: currentPage === 0 ? "hidden" : "block" }}>
                     <Typography sx={{ textAlign: "center", padding: "70px 0;" }} variant="h6">
                         {topics[currentPage - 1]?.name || ""}
                     </Typography>
@@ -77,7 +77,7 @@ export default function Carousel({ topics }: Props) {
                 >
                     <NavigateNext sx={{ fontSize: 40 }} />
                 </IconButton>
-                <Box sx={{ position: "relative", height: "200px", width: "200px", backgroundColor: "#34444D", visibility: currentPage === topics.length - 1 ? "hidden" : "" }}>
+                <Box sx={{ height: "200px", width: "200px", borderRadius: "4px", backgroundColor: "#34444D", visibility: currentPage === topics.length - 1 ? "hidden" : "" }}>
                     <Typography sx={{ textAlign: "center", padding: "70px 0;" }} variant="h6">
                         {topics[currentPage + 1]?.name || ""}
                     </Typography>
