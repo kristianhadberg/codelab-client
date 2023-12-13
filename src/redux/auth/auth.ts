@@ -57,6 +57,9 @@ export function login(username: string, password: string) {
             }
             const responseData = await response.json();
             dispatch(authSlice.actions.loginSuccess(responseData))
+
+            localStorage.setItem('user', JSON.stringify(responseData))
+            console.log(responseData)
             return true;
         } catch (error) {
             console.log(error);
@@ -91,6 +94,9 @@ export function register(username: string, firstName: string, lastName: string, 
             }
             const responseData = await response.json();
             dispatch(authSlice.actions.registerSuccess(responseData))
+
+            localStorage.setItem('user', responseData)
+            console.log(responseData)
             return true;
         } catch (error) {
             console.log(error);
@@ -103,7 +109,15 @@ export function register(username: string, firstName: string, lastName: string, 
 export function logout() {
     return async (dispatch: Dispatch) => {
         dispatch(authSlice.actions.logoutSuccess())
+        localStorage.clear()
     }
+}
+
+export function setUser(user: any) {
+    return async (dispatch: Dispatch) => {
+        dispatch(authSlice.actions.loginSuccess(user))
+    }
+    
 }
 
 export default authSlice.reducer;
