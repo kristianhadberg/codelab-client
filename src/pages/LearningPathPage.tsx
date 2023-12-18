@@ -30,7 +30,7 @@ export default function LearningPathPage() {
                                     </Typography>
                                     <div>
                                         <Typography color="white" variant="h5" fontWeight={"bold"}>
-                                            {lp.name} contains the following topics:
+                                            Contains the following topics:
                                         </Typography>
                                         {lp.topics.map((t) => (
                                             <Typography sx={{ fontWeight: "200" }} color={"white"} variant="h6">

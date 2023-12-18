@@ -29,7 +29,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 export default function LearningPathTopicCard({ preExpanded, topic }: Props) {
-    const [expanded, setExpanded] = useState(false);
+    const [expanded, setExpanded] = useState(true);
 
     useEffect(() => {
         if (preExpanded !== undefined && preExpanded) {
@@ -121,7 +121,7 @@ function LinearProgressWithLabel(props: LinearProgressProps & { value: number })
     return (
         <Box sx={{ display: "flex", alignItems: "center" }}>
             <Box sx={{ width: "100%", mr: 1 }}>
-                <LinearProgress variant="determinate" {...props} />
+                <LinearProgress sx={{ height: "20px", borderRadius: 2 }} variant="determinate" {...props} />
             </Box>
             <Box sx={{ minWidth: 35 }}>
                 <Typography variant="body2" color="white">{`${Math.round(props.value)}%`}</Typography>

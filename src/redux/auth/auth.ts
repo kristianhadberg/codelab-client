@@ -59,7 +59,6 @@ export function login(username: string, password: string) {
             dispatch(authSlice.actions.loginSuccess(responseData))
 
             localStorage.setItem('user', JSON.stringify(responseData))
-            console.log(responseData)
             return true;
         } catch (error) {
             console.log(error);
@@ -96,7 +95,6 @@ export function register(username: string, firstName: string, lastName: string, 
             dispatch(authSlice.actions.registerSuccess(responseData))
 
             localStorage.setItem('user', responseData)
-            console.log(responseData)
             return true;
         } catch (error) {
             console.log(error);

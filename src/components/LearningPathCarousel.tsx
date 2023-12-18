@@ -57,7 +57,7 @@ export default function Carousel({ topics }: Props) {
                 <Box sx={{ width: "600px", height: "100%" }}>
                     {topics.map((topic, index) => (
                         <Box key={`box-${index}`} sx={{ width: "100%", height: "100%", display: currentPage === index ? "block" : "none" }}>
-                            <Slide direction={slideDirection} in={currentPage === index}>
+                            <Slide direction={slideDirection} in={currentPage === index} timeout={500}>
                                 <Stack spacing={2} direction="row" alignContent="center" justifyContent="center">
                                     {topics.slice(index * cardsPerPage, index * cardsPerPage + cardsPerPage).map((subTopic, subIndex) => (
                                         <LearningPathTopicCard key={`topic-card-${subIndex}`} topic={subTopic} />
