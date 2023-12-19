@@ -94,7 +94,7 @@ export function register(username: string, firstName: string, lastName: string, 
             const responseData = await response.json();
             dispatch(authSlice.actions.registerSuccess(responseData))
 
-            localStorage.setItem('user', responseData)
+            localStorage.setItem('user', JSON.stringify(responseData))
             return true;
         } catch (error) {
             console.log(error);
