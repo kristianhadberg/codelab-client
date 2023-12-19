@@ -4,7 +4,7 @@ import { CircularProgress, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { getTopicsByLearningPathId } from "../redux/slices/topics";
 import { getLearningPathByIdAndUserId } from "../redux/slices/learningPaths";
-import LearningPathCarousel from "../components/LearningPathCarousel";
+import LearningPathOverview from "../components/LearningPathOverview";
 
 const LearningPathDetailPage = () => {
     const { learningPathId } = useParams<{ learningPathId: string }>();
@@ -34,7 +34,7 @@ const LearningPathDetailPage = () => {
                         </Typography>
                     </div>
                     <div style={{ marginTop: "100px" }}>
-                        <LearningPathCarousel topics={learningPath?.topics || []} />
+                        <LearningPathOverview topics={learningPath?.topics || []} />
                     </div>
                 </>
             )}
