@@ -23,7 +23,7 @@ export default function TopicsPage() {
                     <Typography variant="h6">Select a topic you want to learn about.</Typography>
                     <div className="topics" style={{ display: "flex", flexWrap: "wrap", marginTop: "50px" }}>
                         {topics.map((t) => (
-                            <Card key={t.id} variant="outlined" sx={{ minWidth: 275, padding: 1, margin: "10px 10px 10px 0", backgroundColor: "#34444D", boxShadow: "2px 2px" }}>
+                            <Card key={t.id} variant="outlined" sx={{ minWidth: 275, padding: 1, margin: "10px 10px 10px 0", backgroundColor: "#34444D", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}>
                                 <CardContent>
                                     <Typography sx={{ fontSize: 16 }} fontWeight={"bold"} color={"white"}>
                                         {t.name}

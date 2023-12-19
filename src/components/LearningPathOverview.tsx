@@ -54,7 +54,7 @@ export default function LearningPathOverview({ topics }: Props) {
     };
 
     return (
-        <div style={{ display: "flex", width: "100%", backgroundColor: "#34444D" }}>
+        <div style={{ display: "flex", width: "100%", backgroundColor: "#34444D", borderRadius: "10px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}>
             <div style={{ borderRight: "2px solid #242E34", padding: 10, position: "relative" }}>
                 {/* overview menu / side menu */}
                 {topics.map((t, index) => (
