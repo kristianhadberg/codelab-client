@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { Button, Card, CardContent, CircularProgress, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { getLearningPaths } from "../redux/slices/learningPaths";
+import { getLearningPaths } from "../../redux/slices/learningPaths";
 
 export default function LearningPathPage() {
     const dispatch = useAppDispatch();

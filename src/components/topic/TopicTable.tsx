@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
-import { IExercise, Difficulty } from "../@types/exercise";
+import { IExercise, Difficulty } from "../../@types/exercise";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 

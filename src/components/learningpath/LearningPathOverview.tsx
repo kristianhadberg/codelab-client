@@ -1,8 +1,8 @@
 import CheckIcon from "@mui/icons-material/Check";
 import { Box, Typography } from "@mui/material";
-import { ITopic } from "../@types/topic";
+import { ITopic } from "../../@types/topic";
 import { useEffect, useState } from "react";
-import ExerciseTable from "./ExerciseTable";
+import ExerciseTable from "../exercise/ExerciseTable";
 import LinearProgress, { LinearProgressProps } from "@mui/material/LinearProgress";
 
 type Props = {
@@ -34,7 +34,7 @@ export default function LearningPathOverview({ topics }: Props) {
         getInitialActiveTopic();
     }, [topics]);
 
-    const getProgressValue = () => {
+    const getProgressBarValue = () => {
         if (!activeTopic) return;
         let completedExercises = 0;
         const totalExercises = activeTopic?.exercises.length;
@@ -67,8 +67,8 @@ export default function LearningPathOverview({ topics }: Props) {
                                 borderRadius: "50%",
                                 width: "60px",
                                 height: "60px",
-                                border: t.isCompleted ? "2px solid #9FF6C7" : "2px solid white",
-                                backgroundColor: t.isCompleted ? "#9FF6C7" : "#34444D",
+                                border: activeTopic === t ? "2px solid#1976d2" : t.isCompleted ? "2px solid #9FF6C7" : "2px solid white",
+                                backgroundColor: activeTopic === t ? "#1976d2" : t.isCompleted ? "#9FF6C7" : "#34444D",
                                 position: "relative",
                                 zIndex: 1,
                             }}
@@ -109,7 +109,7 @@ export default function LearningPathOverview({ topics }: Props) {
                     <Typography variant="body2" fontWeight={200}>
                         Your progress for this topic
                     </Typography>
-                    <LinearProgressWithLabel value={getProgressValue() || 0} />
+                    <LinearProgressWithLabel value={getProgressBarValue() || 0} />
                 </div>
                 <Typography sx={{ color: "white", marginTop: 5 }} variant="h6">
                     Exercises

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { getTopics } from "../redux/slices/topics";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { getTopics } from "../../redux/slices/topics";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { Button, Card, CardActions, CardContent, CircularProgress, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 

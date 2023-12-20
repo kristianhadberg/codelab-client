@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, CircularProgress, Typography } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { getExerciseByid } from "../redux/slices/exercises";
-import { createSubmission, clearPassedState, getSubmissionsByExerciseId } from "../redux/slices/submissions";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { getExerciseByid } from "../../redux/slices/exercises";
+import { createSubmission, clearPassedState, getSubmissionsByExerciseId } from "../../redux/slices/submissions";
 import Editor from "@monaco-editor/react";
 import { editor } from "monaco-editor";
-import { ISubmission } from "../@types/submission";
-import ExerciseDescription from "../components/ExerciseDescription";
-import ExerciseSubmissions from "../components/ExerciseSubmissions";
+import { ISubmission } from "../../@types/submission";
+import ExerciseDescription from "../../components/exercise/ExerciseDescription";
+import ExerciseSubmissions from "../../components/exercise/ExerciseSubmissions";
 import { GridEventListener, GridRowParams } from "@mui/x-data-grid";
 
 const ExercisePage = () => {

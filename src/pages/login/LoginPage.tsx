@@ -1,8 +1,8 @@
 import { Button, FormControl, InputAdornment, TextField } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../redux/auth/auth";
-import { useAppDispatch } from "../app/hooks";
+import { login } from "../../redux/auth/auth";
+import { useAppDispatch } from "../../app/hooks";
 import { withEmotionCache } from "@emotion/react";
 
 export default function LoginPage() {

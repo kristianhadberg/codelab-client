@@ -1,5 +1,5 @@
 import { DataGrid, GridColDef, GridEventListener, GridValueGetterParams } from "@mui/x-data-grid";
-import { ISubmission } from "../@types/submission";
+import { ISubmission } from "../../@types/submission";
 
 type Props = {
     submissions: ISubmission[];

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ITopic } from "../@types/topic";
+import { ITopic } from "../../@types/topic";
 import { Box, IconButton, Slide, Stack, Typography } from "@mui/material";
 import { NavigateBefore, NavigateNext } from "@mui/icons-material";
 import LearningPathTopicCard from "./LearningPathTopicCard";

@@ -1,8 +1,8 @@
 import { Button, FormControl, TextField } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { register } from "../redux/auth/auth";
-import { useAppDispatch } from "../app/hooks";
+import { register } from "../../redux/auth/auth";
+import { useAppDispatch } from "../../app/hooks";
 export default function RegisterPage() {
     const [username, setUsername] = useState("");
     const [firstName, setFirstName] = useState("");

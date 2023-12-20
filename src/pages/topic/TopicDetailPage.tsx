@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { getTopic } from "../redux/slices/topics";
-import { getExercisesByTopicId, getExercisesByTopicIdAndUserId } from "../redux/slices/exercises";
-import TopicTable from "../components/TopicTable";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { getTopic } from "../../redux/slices/topics";
+import { getExercisesByTopicId, getExercisesByTopicIdAndUserId } from "../../redux/slices/exercises";
+import TopicTable from "../../components/topic/TopicTable";
 
 const TopicDetailPage = () => {
     const { topicId } = useParams<{ topicId: string }>();

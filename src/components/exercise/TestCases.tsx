@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { ITestCase } from "../@types/testCase";
+import { ITestCase } from "../../@types/testCase";
 
 type Props = {
     testCases: ITestCase[];

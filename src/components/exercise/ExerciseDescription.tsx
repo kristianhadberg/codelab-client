@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { IExercise } from "../@types/exercise";
+import { IExercise } from "../../@types/exercise";
 import TestCases from "./TestCases";
 
 type Props = {

@@ -3,8 +3,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import RouteIcon from "@mui/icons-material/Route";
 import { Typography } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { logout } from "../redux/auth/auth";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { logout } from "../../redux/auth/auth";
 
 const SideNav = () => {
     const user = useAppSelector((state) => state.user);

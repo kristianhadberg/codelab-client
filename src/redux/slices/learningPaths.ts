@@ -7,7 +7,8 @@ const initialState: ILearningPathState = {
     isLoading: false,
     error: null,
     learningPaths: [],
-    learningPath: null
+    learningPath: null,
+    learningPathProgress: null
 }
 
 const learningPathSlice = createSlice({
@@ -28,6 +29,10 @@ const learningPathSlice = createSlice({
       getLearningPathSuccess(state, action) {
         state.isLoading = false;
         state.learningPath = action.payload;
+      },
+      getLearningPathProgressSuccess(state, action) {
+        state.isLoading = false;
+        state.learningPathProgress = action.payload;
       }
     },
   });
@@ -66,6 +71,20 @@ export function getLearningPaths() {
       try {
         const response = await fetch(`http://localhost:5214/api/learning-paths/${id}/${userId}`).then(response => response.json());
         dispatch(learningPathSlice.actions.getLearningPathSuccess(response));
+        return true;
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+    };
+  }
+
+  export function getLearningPathProgressByIdAndUserId(id: string, userId: number) {
+    return async (dispatch: Dispatch) => {
+      dispatch(learningPathSlice.actions.startLoading());
+      try {
+        const response = await fetch(`http://localhost:5214/api/learning-paths/progress/${id}/${userId}`).then(response => response.json());
+        dispatch(learningPathSlice.actions.getLearningPathProgressSuccess(response));
         return true;
       } catch (error) {
         console.log(error);

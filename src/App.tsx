@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import TopicsPage from "./pages/TopicsPage";
-import LoginPage from "./pages/LoginPage";
-import LearningPathPage from "./pages/LearningPathPage";
-import SideNav from "./components/SideNav";
+import TopicsPage from "./pages/topic/TopicsPage";
+import LoginPage from "./pages/login/LoginPage";
+import LearningPathPage from "./pages/learningpath/LearningPathPage";
+import SideNav from "./components/routing/SideNav";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import TopicDetailPage from "./pages/TopicDetailPage";
-import ExercisePage from "./pages/ExercisePage";
-import PrivateRoutes from "./components/PrivateRoute";
-import RegisterPage from "./pages/RegisterPage";
-import LearningPathDetailPage from "./pages/LearningPathDetailPage";
+import TopicDetailPage from "./pages/topic/TopicDetailPage";
+import ExercisePage from "./pages/exercise/ExercisePage";
+import PrivateRoutes from "./components/routing/PrivateRoute";
+import RegisterPage from "./pages/login/RegisterPage";
+import LearningPathDetailPage from "./pages/learningpath/LearningPathDetailPage";
 import { setUser } from "./redux/auth/auth";
 import { useAppDispatch } from "./app/hooks";
 

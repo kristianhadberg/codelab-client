@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
-import { ISubmission } from "../@types/submission";
-import SubmissionsTable from "./SubmissionsTable";
+import { ISubmission } from "../../@types/submission";
+import SubmissionsTable from "../submission/SubmissionsTable";
 import { GridEventListener } from "@mui/x-data-grid";
 
 type Props = {
