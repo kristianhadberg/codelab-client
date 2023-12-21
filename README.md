@@ -1,3 +1,41 @@
+# Code Lab E-Learning Platform (Frontend)
+
+## Final Project - Computer Science KEA, 2023
+
+Welcome to the frontend repository of the Code Lab E-Learning Platform! This repository works in conjunction with the [server-side repository](https://github.com/kristianhadberg/codelab-server).
+
+## Overview
+
+This application serves as the frontend for an E-Learning Platform designed to facilitate the learning of various programming topics.
+
+## Features
+
+- **User Authentication:** Secure user registration and login functionality.
+- **Learning Paths:** Structured paths covering different programming topics.
+- **Topics and Exercises:** Well-organized content including topics and associated programming exercises.
+- **User Progress Tracking:** Monitor user progress on learning paths and exercises.
+- **RESTful API:** Utilizes a RESTful API for seamless communication with the frontend.
+
+## Technologies used
+- **Backend:**
+   - **C# (.NET Core)**
+   - **Entity Framework Core**
+   - **ASP.NET Core Web API**
+- **Frontend:**
+   - **React**
+   - **TypeScript**
+   - **Redux**
+
+## Getting Started
+
+To get started with the Code Lab E-Learning Platform, follow these steps:
+
+1. **Clone Repositories:**
+   ```bash
+   git clone https://github.com/kristianhadberg/codelab-backend.git
+   git clone https://github.com/kristianhadberg/codelab-client.git
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
