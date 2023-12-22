@@ -14,13 +14,13 @@ export default function TopicsPage() {
     }, [dispatch]);
 
     return (
-        <div>
+        <>
+            <Typography variant="h3">Topics</Typography>
+            <Typography variant="h6">Select a topic you want to learn about.</Typography>
             {isLoading ? (
-                <CircularProgress />
+                <CircularProgress sx={{ marginTop: 10 }} />
             ) : (
                 <>
-                    <Typography variant="h3">Topics</Typography>
-                    <Typography variant="h6">Select a topic you want to learn about.</Typography>
                     <div style={{ display: "flex", flexWrap: "wrap", marginTop: "50px" }}>
                         {topics.map((t) => (
                             <TopicCard key={t.name} topic={t} />
@@ -28,6 +28,6 @@ export default function TopicsPage() {
                     </div>
                 </>
             )}
-        </div>
+        </>
     );
 }
