@@ -1,7 +1,7 @@
 import { createSlice, Dispatch } from '@reduxjs/toolkit';
-
-
 import { ILearningPathState } from '../../@types/learningPath';
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const initialState: ILearningPathState = {
     isLoading: false,
@@ -41,7 +41,7 @@ export function getLearningPaths() {
     return async (dispatch: Dispatch) => {
       dispatch(learningPathSlice.actions.startLoading());
       try {
-        const response = await fetch('http://localhost:5214/api/learning-paths').then(response => response.json());
+        const response = await fetch(`${apiUrl}/api/learning-paths`).then(response => response.json());
         dispatch(learningPathSlice.actions.getLearningPathsSuccess(response));
         return true;
       } catch (error) {
@@ -55,7 +55,7 @@ export function getLearningPaths() {
     return async (dispatch: Dispatch) => {
       dispatch(learningPathSlice.actions.startLoading());
       try {
-        const response = await fetch(`http://localhost:5214/api/learning-paths/${id}`).then(response => response.json());
+        const response = await fetch(`${apiUrl}/api/learning-paths/${id}`).then(response => response.json());
         dispatch(learningPathSlice.actions.getLearningPathSuccess(response));
         return true;
       } catch (error) {
@@ -69,7 +69,7 @@ export function getLearningPaths() {
     return async (dispatch: Dispatch) => {
       dispatch(learningPathSlice.actions.startLoading());
       try {
-        const response = await fetch(`http://localhost:5214/api/learning-paths/${id}/${userId}`).then(response => response.json());
+        const response = await fetch(`${apiUrl}/api/learning-paths/${id}/${userId}`).then(response => response.json());
         dispatch(learningPathSlice.actions.getLearningPathSuccess(response));
         return true;
       } catch (error) {
@@ -83,7 +83,7 @@ export function getLearningPaths() {
     return async (dispatch: Dispatch) => {
       dispatch(learningPathSlice.actions.startLoading());
       try {
-        const response = await fetch(`http://localhost:5214/api/learning-paths/progress/${id}/${userId}`).then(response => response.json());
+        const response = await fetch(`${apiUrl}/api/learning-paths/progress/${id}/${userId}`).then(response => response.json());
         dispatch(learningPathSlice.actions.getLearningPathProgressSuccess(response));
         return true;
       } catch (error) {

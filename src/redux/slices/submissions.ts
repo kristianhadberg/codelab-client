@@ -1,6 +1,7 @@
 import { createSlice, Dispatch } from '@reduxjs/toolkit';
 import { ISubmission, ISubmissionState } from '../../@types/submission';
-import { error } from 'console';
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const initialState: ISubmissionState = {
     isLoading: false,
@@ -79,7 +80,7 @@ export function getSubmissions() {
     return async (dispatch: Dispatch) => {
         dispatch(submissionsSlice.actions.startSubmitting());
         try {
-            const response = await fetch(`http://localhost:5214/api/submissions`, {
+            const response = await fetch(`${apiUrl}/api/submissions`, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -112,7 +113,7 @@ export function getSubmissionsByExerciseId(exerciseId : string) {
   return async (dispatch: Dispatch) => {
     dispatch(submissionsSlice.actions.startLoading());
     try {
-      const response = await fetch(`http://localhost:5214/api/submissions/exercise/${exerciseId}`).then(response => response.json());
+      const response = await fetch(`${apiUrl}/api/submissions/exercise/${exerciseId}`).then(response => response.json());
       dispatch(submissionsSlice.actions.getSubmissionsSuccess(response));
       return true;
     } catch (error) {
